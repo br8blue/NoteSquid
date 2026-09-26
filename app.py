@@ -27,7 +27,7 @@ def get_notes():
 @app.route('/notes/<int:note_id>', methods=['DELETE'])
 def delete_note(note_id):
     deleteNoteFunc(note_id)
-    return jsonify({'message': 'Note deleted successfully'}), ({"status": "deleted, success"}) 200
+    return jsonify({'message': 'Note deleted successfully'}), ({"status": "deleted, success"}), 200
 
 
 
