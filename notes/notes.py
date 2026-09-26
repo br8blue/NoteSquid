@@ -9,9 +9,13 @@ def createNote(user, noteTitle, noteContent):
         "user": user,
         "title": noteTitle,
         "content": noteContent,
-        "noteCreated": datetime.now().strftime("%Y-%m-%d")
+        "noteCreated": datetime.now().strftime("%Y-%m-%d"),
         "noteUpdated": datetime.now().strftime("%Y-%m-%d")
     })
+
+
+def getNotes(user):
+    return list(db.notes.find({"user": user}))
 
 
 def updateNote(noteId, noteContent):
