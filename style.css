@@ -11,11 +11,13 @@ nav {
 .li {
     background-color: lightgray;
     color: black;
-    border: none;
 }
 
 .su {
     background-color: dodgerblue;
     color: black;
-    border: none;
+}
+
+.title {
+    font-size: 120px;
 }
