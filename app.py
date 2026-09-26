@@ -27,8 +27,17 @@ def get_notes():
 @app.route('/notes/<int:note_id>', methods=['DELETE'])
 def delete_note(note_id):
     deleteNoteFunc(note_id)
-    return jsonify({'message': 'Note deleted successfully'}), ({"status": "deleted, success"}), 200
+    return jsonify({'message': 'Note deleted successfully'}), ({"status": "deleted, success"}), 204
 
+
+@app.route('/notes/<int:note_id>', methods=['PUT'])
+def update_note(note_id):
+    data = request.get_json()
+    updateNoteFunc(
+        note_id,
+        data['content']
+    )
+    return jsonify({'message': 'Note updated successfully'}), ({"status": "updated, success"}), 200
 
 
 if __name__ == '__main__':  
