@@ -11,33 +11,33 @@ app = Flask(__name__)
 def create_note():
     data = request.get_json()
     createNoteFunc(
+        data['user'],
         data['title'],
         data['content']
-        data['user']
     )
-    return jsonify({'message': 'Note created successfully'}), ({"status": "success"}), 201
+    return jsonify({'message': 'Note created successfully', "status": "success"}), 201
 
 
 @app.route('/notes', methods=['GET'])
 def get_notes():
     user = request.args.get('user')
-    notes = getNotesFunc()
+    notes = getNotesFunc(user)
     return jsonify({'notes': notes}), 200
 
-@app.route('/notes/<int:note_id>', methods=['DELETE'])
+@app.route('/notes/<note_id>', methods=['DELETE'])
 def delete_note(note_id):
     deleteNoteFunc(note_id)
-    return jsonify({'message': 'Note deleted successfully'}), ({"status": "deleted, success"}), 204
+    return jsonify({'message': 'Note deleted successfully', "status": "success"}), 204
 
 
-@app.route('/notes/<int:note_id>', methods=['PUT'])
+@app.route('/notes/<note_id>', methods=['PUT'])
 def update_note(note_id):
     data = request.get_json()
     updateNoteFunc(
         note_id,
         data['content']
     )
-    return jsonify({'message': 'Note updated successfully'}), ({"status": "updated, success"}), 200
+    return jsonify({'message': 'Note updated successfully', "status": "success"}), 200
 
 
 if __name__ == '__main__':  
