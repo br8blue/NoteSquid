@@ -1,5 +1,20 @@
+/* Default Styles */
+
+:root {
+    --gradient1-color: #82e3f2;
+    --gradient2-color: #214788;
+    --nav-text-color: #000;
+    
+}
+
+
+
 nav {
-    background-image: linear-gradient(to right, #51ccde, #214788);
+    background-image: linear-gradient(to right, var(--gradient1-color), var(--gradient2-color));
+}
+
+nav a.nav-link {
+    color: var(--nav-text-color);
 }
 
 .acc {
@@ -9,7 +24,7 @@ nav {
 }
 
 .li {
-    background-color: lightgray;
+    background-color: rgb(192, 192, 192);
     color: black;
 }
 
@@ -20,4 +35,22 @@ nav {
 
 .title {
     font-size: 120px;
+}
+
+.hover-underline-animation::after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px var(--nav-text-color);
+    transform: scaleX(0);
+    background-color: var(--nav-text-color);
+    transition: transform 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    background-color: #FFF;
+}
+
+.logo {
+    margin-right: 15px;
 }
