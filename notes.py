@@ -11,7 +11,6 @@ def createNote(user, noteTitle, noteContent):
         "content": noteContent,
         "noteCreated": datetime.now().strftime("%Y-%m-%d")
         "noteUpdated": datetime.now().strftime("%Y-%m-%d")
-
     })
 
 
