@@ -1,9 +1,8 @@
-from pymongo import MongoClient
+from db import db
 import hashlib
+from datetime import datetime
 
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client["NoteSquid"]
 
 def signUp(user, password):
     if db.users.find_one({"user": user}):
@@ -13,7 +12,7 @@ def signUp(user, password):
     db.users.insert_one({
         "user": user,
         "password": hashed,
-        "joined": "2026-09-23"
+        "joined": datetime.now().strftime("%Y-%m-%d")
     })
 
 def login(user, password):
