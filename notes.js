@@ -7,7 +7,7 @@ document.getElementById("saveNote").onclick = function() {
     const title = document.getElementById("noteTitle").value;
     const content = document.getElementById("noteContent").value;
 
-    fetch("http://127.0.0.1:5500/notes", {
+    fetch("http://127.0.0.1:5000/notes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -35,7 +35,7 @@ document.getElementById("saveNote").onclick = function() {
 
 
 function loadNotes() {
-    fetch("http://127.0.0.1:5500/notes?user=dummy")
+    fetch("http://127.0.0.1:5000/notes?user=dummy")
         .then(res => res.json())
         .then(data => {
             const notes = data.notes;

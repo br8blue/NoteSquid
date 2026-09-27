@@ -5,7 +5,6 @@ from notes import getNotes as getNotesFunc, deleteNote as deleteNoteFunc, update
 
 app = Flask(__name__)
 
-app.run(debug=True, port=5500)
 
 
 @app.route('/notes', methods=['POST'])
@@ -42,4 +41,4 @@ def update_note(note_id):
 
 
 if __name__ == '__main__':  
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
