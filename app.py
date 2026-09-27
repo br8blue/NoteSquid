@@ -3,9 +3,10 @@ from notes import createNote as createNoteFunc
 from notes import getNotes as getNotesFunc, deleteNote as deleteNoteFunc, updateNote as updateNoteFunc
 
 
-
-
 app = Flask(__name__)
+
+app.run(debug=True, port=5500)
+
 
 @app.route('/notes', methods=['POST'])
 def create_note():
