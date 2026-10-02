@@ -1,9 +1,23 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, redirect, url_for, make_response
+from flask_cors import CORS
 from notes import createNote as createNoteFunc
 from notes import getNotes as getNotesFunc, deleteNote as deleteNoteFunc, updateNote as updateNoteFunc
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder="static")
+
+
+CORS(app)
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/notes")
+def notesPage():
+    return render_template("notes/index.html")
 
 
 
@@ -15,6 +29,7 @@ def create_note():
         data['title'],
         data['content']
     )
+    print("POST reached Flask:", data)
     return jsonify({'message': 'Note created successfully', "status": "success"}), 201
 
 

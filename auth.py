@@ -23,3 +23,4 @@ def login(user, password):
         return False
 
     return user_doc["password"] == hashed
+
